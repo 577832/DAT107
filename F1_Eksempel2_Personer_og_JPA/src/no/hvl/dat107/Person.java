@@ -10,8 +10,7 @@ import javax.persistence.Table;
 @NamedQuery(name = "hentAllePersoner", query ="SELECT p FROM Person p")
 public class Person {
 	
-	@Id
-	private Integer id;
+	@Id private Integer id;
 	private String navn;
 	
 	public Person() {
