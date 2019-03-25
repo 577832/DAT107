@@ -16,7 +16,7 @@ public class PersonEOA {
         emf = Persistence.createEntityManagerFactory("personPersistenceUnit");
     }
     
-    public int createPerson(Person p) {
+    public int savePerson(Person p) {
         
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();

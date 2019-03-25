@@ -59,7 +59,8 @@ public class Main {
         Person mikke = new Person();
         mikke.setNavn("Mikke Mus");
 
-        int nyPersonId = personEAO.createPerson(mikke);
+        int nyPersonId = personEAO.savePerson(mikke);
+        
         mikke = personEAO.retrievePerson(nyPersonId);
         System.out.println(mikke);
 
