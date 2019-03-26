@@ -6,12 +6,23 @@ SET search_path TO forelesning3;
     
 CREATE TABLE Vitnemal
 (
--- ???
+	StudNr INTEGER,
+	Studiestart DATE NOT NULL,
+	Studieslutt DATE,
+	CONSTRAINT VitnemalPK PRIMARY KEY (StudNr)
 );
 
 CREATE TABLE Karakter
 (
--- ???
+	KarNr SERIAL,
+	Kurskode CHAR(6) NOT NULL,
+	EksDato DATE NOT NULL,
+	Karakter CHAR(1),
+	StudNr INTEGER NOT NULL,
+	CONSTRAINT KarakterPK PRIMARY KEY (KarNr),
+	CONSTRAINT KarUnik UNIQUE (Kurskode, StudNr),
+	CONSTRAINT VitnemalFK FOREIGN KEY (StudNr) 
+		REFERENCES Vitnemal(StudNr)
 );
 
 INSERT INTO
