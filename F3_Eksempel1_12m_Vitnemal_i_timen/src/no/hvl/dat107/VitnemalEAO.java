@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 public class VitnemalEAO {
 
@@ -80,23 +81,35 @@ public class VitnemalEAO {
         }
         return nyKar;
     }
-//
-//    public ??? finnKarakter(???) {
-//        
-//        EntityManager em = emf.createEntityManager();
-//        EntityTransaction tx = em.getTransaction();
-//
-//        try {
-//            tx.begin();
-//        	//???
-//            tx.commit();
-//
-//        } catch (Throwable e) {
-//        	if (tx.isActive()) {
-//                tx.rollback();
-//        	}
-//        } finally {
-//            em.close();
-//        }
-//    }
+
+    public Karakter finnKarakter(int studNr, String emnekode) {
+        
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        
+        String queryString =
+        		"SELECT k FROM Karakter k" +
+        		"WHERE k.kurskode = :kurskode AND k.vitnemal.studNr = :studNr";
+
+        Karakter karakter = null;
+        
+        try {
+            tx.begin();
+        	
+            TypedQuery<Karakter> query = em.createQuery(queryString, Karakter.class);
+            query.setParameter("kurskode", emnekode);
+            query.setParameter("studNr", studNr);
+            karakter = query.getSingleResult();
+            
+            tx.commit();
+
+        } catch (Throwable e) {
+        	if (tx.isActive()) {
+                tx.rollback();
+        	}
+        } finally {
+            em.close();
+        }
+        return karakter;
+    }
 }

@@ -29,19 +29,19 @@ public class Main {
         
         //------------------------------------------------------------------------
         
-//        System.out.println("\n\nEndrer navn, fjerner [Vaske Opp], legger til [Vaske vinduer], "
-//        		+ "endrer støvsuging-tekst til \"Gøy støvsuging\" og oppdaterer ...");
-//
-//        husarbeid.setNavn("Gøy husarbeid");
-//        husarbeid.fjern(vaskeOpp);         
-//        husarbeid.leggTil(vaskeVinduer);   
-//        stovsuge.setTekst("Gøy støvsuging");
-//       
-//        todolisteEAO.oppdaterListe(husarbeid);
-//        
-//        System.out.println("Etter oppdaterListe():");
-//        System.out.println(todolisteEAO.finnListe(listeId));
-//        
+        System.out.println("\n\nEndrer navn, fjerner [Vaske Opp], legger til [Vaske vinduer], "
+        		+ "endrer støvsuging-tekst til \"Gøy støvsuging\" og oppdaterer ...");
+
+        husarbeid.setNavn("Gøy husarbeid");
+        husarbeid.fjern(vaskeOpp);         
+        husarbeid.leggTil(vaskeVinduer);   
+        stovsuge.setTekst("Gøy støvsuging");
+       
+        todolisteEAO.oppdaterListe(husarbeid);
+        
+        System.out.println("Etter oppdaterListe():");
+        System.out.println(todolisteEAO.finnListe(listeId));
+        
 //        //------------------------------------------------------------------------
 //        
 //        System.out.println("\n\nSøker opp listen på navn ...");
@@ -57,12 +57,12 @@ public class Main {
 //        System.out.println(todolisteEAO.finnTodosIListe(listeId));
 //        
 //        //------------------------------------------------------------------------
-//        
-//        System.out.println("\n\nSletter listen ...");
-//        
-//        todolisteEAO.slettListe(husarbeid);
-//        System.out.println("Etter slettListe()");
-//        System.out.println(todolisteEAO.finnListe(listeId));
+        
+        System.out.println("\n\nSletter listen ...");
+        
+        todolisteEAO.slettListe(husarbeid);
+        System.out.println("Etter slettListe()");
+        System.out.println(todolisteEAO.finnListe(listeId));
     }
 }
 

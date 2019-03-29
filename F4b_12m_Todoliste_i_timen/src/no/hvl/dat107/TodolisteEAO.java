@@ -23,6 +23,7 @@ public class TodolisteEAO {
         Todoliste liste = null;
         try {
             liste = em.find(Todoliste.class, listeNr);
+//            liste.getTodos().size(); //I stedet for EAGER
         } finally {
             em.close();
         }

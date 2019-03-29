@@ -3,7 +3,9 @@ package no.hvl.dat107;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,9 +21,16 @@ public class Todoliste {
     private int listeId;
     private String navn;
     
-    @OneToMany(
-    		mappedBy = "liste") //TODO
+    @OneToMany( //evt. fetch = FetchType.EAGER
+    		mappedBy = "liste",
+    		fetch = FetchType.EAGER,
+    		cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+    		orphanRemoval = true)
     private List<Todo> todos;
+    
+    public List<Todo> getTodos() {
+    	return todos;
+    }
     
     public Todoliste() {
     	this("[Uten navn]");
@@ -33,11 +42,13 @@ public class Todoliste {
     }
 
     public void leggTil(Todo todo) {
-    	//TODO
+    	todos.add(todo);
+    	todo.setListe(this);
     }
 
     public void fjern(Todo todo) {
-    	//TODO
+    	todos.remove(todo);
+    	todo.setListe(null);
     }
 
     public int getListeId() {
