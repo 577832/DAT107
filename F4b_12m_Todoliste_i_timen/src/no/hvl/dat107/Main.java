@@ -58,11 +58,11 @@ public class Main {
 //        
 //        //------------------------------------------------------------------------
         
-        System.out.println("\n\nSletter listen ...");
-        
-        todolisteEAO.slettListe(husarbeid);
-        System.out.println("Etter slettListe()");
-        System.out.println(todolisteEAO.finnListe(listeId));
+//        System.out.println("\n\nSletter listen ...");
+//        
+//        todolisteEAO.slettListe(husarbeid);
+//        System.out.println("Etter slettListe()");
+//        System.out.println(todolisteEAO.finnListe(listeId));
     }
 }
 
