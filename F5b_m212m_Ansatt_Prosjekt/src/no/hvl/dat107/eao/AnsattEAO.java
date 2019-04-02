@@ -38,7 +38,15 @@ public class AnsattEAO {
         try {
             tx.begin();
             
-            //TODO
+            a = em.merge(a);
+            p = em.merge(p);
+            
+            Prosjektdeltagelse pd = new Prosjektdeltagelse(a, p, 0);
+            
+            a.leggTilProsjektdeltagelse(pd);
+            p.leggTilProsjektdeltagelse(pd);
+            
+            em.persist(pd);
             
             tx.commit();
         } catch (Throwable e) {
@@ -59,7 +67,15 @@ public class AnsattEAO {
         try {
             tx.begin();
 
-            //TODO
+            ProsjektdeltagelsePK pdpk = new ProsjektdeltagelsePK(
+            		a.getId(), p.getId());
+            
+            Prosjektdeltagelse pd = em.find(Prosjektdeltagelse.class, pdpk);
+            
+            em.remove(pd);
+            
+            em.merge(a).fjernProsjektdeltagelse(pd);
+            em.merge(p).fjernProsjektdeltagelse(pd);
             
             tx.commit();
         } catch (Throwable e) {

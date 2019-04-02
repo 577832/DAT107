@@ -30,13 +30,20 @@ public class AnsattEAO {
     }
 
     public void registrerProsjektdeltagelse(Ansatt a, Prosjekt p) {
+    	
+    	//Anta at a og p finnes i databasen.
+    	//Men de er jo detached.
         
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
             
-            //TODO
+            a = em.merge(a);
+            p = em.merge(p);
+            
+            a.leggTilProsjekt(p);
+            p.leggTilAnsatt(a);
             
             tx.commit();
         } catch (Throwable e) {
@@ -57,7 +64,12 @@ public class AnsattEAO {
         try {
             tx.begin();
 
-            //TODO
+            a = em.merge(a);
+            p = em.merge(p);
+            
+            a.fjernProsjekt(p);
+            p.fjernAnsatt(a);
+            
             
             tx.commit();
         } catch (Throwable e) {

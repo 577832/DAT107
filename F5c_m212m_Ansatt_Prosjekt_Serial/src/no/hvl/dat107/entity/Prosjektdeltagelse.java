@@ -8,15 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
-//Lombok-annotations - Disse lager automatisk gettere og settere
-//NB! Dere fjerner denne annoteringen og lager gettere osv. selv!
-@Getter
-@Setter
-
-//JPA-annotations
 @Entity 
 @Table(schema = "forelesning5c")
 public class Prosjektdeltagelse {

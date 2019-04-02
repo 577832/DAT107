@@ -39,7 +39,7 @@ public class AnsattEAO {
         try {
             tx.begin();
             
-            //TODO
+            //TODO Samme som i b)
             
             tx.commit();
         } catch (Throwable e) {
@@ -60,7 +60,9 @@ public class AnsattEAO {
         try {
             tx.begin();
 
-            //TODO
+            Prosjektdeltagelse pd = null; //JPQL-spørring
+            		
+            // Videre som i b)
             
             tx.commit();
         } catch (Throwable e) {

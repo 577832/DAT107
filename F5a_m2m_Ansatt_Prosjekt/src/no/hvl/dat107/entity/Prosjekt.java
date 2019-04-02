@@ -13,12 +13,8 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-//Lombok-annotation - Denne lager automatisk gettere, settere, toString, osv...
-//NB! Dere fjerner denne annoteringen og lager gettere osv. selv!
-@Data
-
-//JPA-annotations
-@Entity @Table(schema = "forelesning5a")
+@Entity
+@Table(schema = "forelesning5a")
 public class Prosjekt {
 
     @Id
