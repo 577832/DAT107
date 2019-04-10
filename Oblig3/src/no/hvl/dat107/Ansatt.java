@@ -28,6 +28,7 @@ public class Ansatt {
 	private int avdelingsid; 
 	
 	
+	
 	@ManyToOne
 	@PrimaryKeyJoinColumn(name = "avdelingsid", referencedColumnName = "avdelingsid")
 	private Avdeling avdeling; 
@@ -36,7 +37,7 @@ public class Ansatt {
 		
 	}
 	
-	public Ansatt(String brukernavn,  String fornavn, String etternavn, LocalDate ansDato, String stilling, int lonn ) {
+	public Ansatt(String brukernavn,  String fornavn, String etternavn, LocalDate ansDato, String stilling, int lonn, Avdeling avdeling ) {
 		
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn; 
@@ -44,6 +45,9 @@ public class Ansatt {
 		this.ansDato = ansDato; 
 		this.stilling = stilling; 
 		this.lonn = lonn; 
+		this.avdeling = avdeling;
+		
+		avdeling.leggTilAnsatt(this);
 	}
 	
 	@Override
@@ -137,6 +141,7 @@ public class Ansatt {
 		this.avdelingsid = avdelingsid; 
 	}
 
+	
 
 	
 }

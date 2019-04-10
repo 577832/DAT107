@@ -13,7 +13,10 @@ public class ProsjektEAO {
 	emf = Persistence.createEntityManagerFactory("ansattPU");
 	
 	}
-	
+	/**
+	 * En metode som legger til nytt prosjekt
+	 * @param nyttProsjekt
+	 */
 	public void nyttProsjekt(Prosjekt nyttProsjekt) {
 		
 		EntityManager em = emf.createEntityManager(); 
@@ -31,6 +34,18 @@ public class ProsjektEAO {
 		} finally {
 			em.close();
 		}
+		
 	}
+		public Prosjekt finnProsjekt(int prosjektID) {
+
+			EntityManager em = emf.createEntityManager();
+
+			try {
+				return em.find(Prosjekt.class, prosjektID);
+			} finally {
+				em.close();
+			}
+		}
+	
 
 }

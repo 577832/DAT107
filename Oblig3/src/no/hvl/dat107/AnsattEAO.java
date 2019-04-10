@@ -67,6 +67,7 @@ public class AnsattEAO {
 		try {
 			tx.begin();
 			em.merge(ansatt); 
+			em.merge(ansatt.getAvdeling());
 			tx.commit();
 		}catch (Throwable e) {
 			e.printStackTrace();
@@ -85,6 +86,7 @@ public class AnsattEAO {
 
 		try {
 			tx.begin();
+			em.merge(nyAnsatt.getAvdeling());
 			em.persist(nyAnsatt);
 			tx.commit();
 

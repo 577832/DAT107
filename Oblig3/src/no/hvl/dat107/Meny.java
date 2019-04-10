@@ -21,6 +21,8 @@ public class Meny {
 		AvdelingEAO eao2 = new AvdelingEAO();
 		AnsattEAO eao = new AnsattEAO();
 		ProsjektEAO eaoPro = new ProsjektEAO(); 
+		ProsjektDeltagelseEAO eaoPD = new ProsjektDeltagelseEAO(); 
+		
 
 		String meny = ("Skriv tallet for operasjonen du ønsker å utføre: " + "\n" + "1: Finn Ansatt med Ansatt- ID"
 				+ "\n" + "2: Finn Ansatt med brukernavn" + "\n" + "3: Skriv ut liste med alle ansatte" + "\n"
@@ -28,7 +30,7 @@ public class Meny {
 				+ "6: Finn Avdeling med Avdelings - ID" + "\n"
 				+ "7: Skriv ut liste med ansatte i avdeling og sjef i avdeling" + "\n"
 				+ "8: Oppdaterer avdeling til ansatt" + "\n" + "9: Opprett ny avdeling: " + "\n"
-				+  "10: Legg inn nytt prosjekt" + "\n" + "0: Lagre og avslutt");
+				+  "10: Legg inn nytt prosjekt" + "\n" + "11: Registrer prosjektdeltagelse" + "\n" + "0: Lagre og avslutt");
 
 		int input = 1;
 
@@ -208,11 +210,33 @@ public class Meny {
 				
 				Prosjekt pro1 = new Prosjekt(proNavn, beskrivelse); 
 				eaoPro.nyttProsjekt(pro1);
-				pro1.setNavn(proNavn);
-				pro1.setBeskrivelse(beskrivelse);
+//				pro1.setNavn(proNavn);
+//				pro1.setBeskrivelse(beskrivelse);
 				
 				
 				break; 
+			case 11:
+				
+				System.out.println("Registrer prosjektdeltagelse");
+				System.out.println("Hvilken ansatt skal jobbe med prosjektet, skriv id:");
+				int aID = Integer.parseInt(IN.nextLine());
+				Ansatt ans2 = eao.finnAnsatt(aID); 
+				
+				System.out.println("Ansatt sin rolle i prosjektet:");
+				String rolle = IN.nextLine();
+				
+				System.out.println("Hvilket prosjekt skal den ansatte jobbe i, skriv prosjekt-id");
+				int pID = Integer.parseInt(IN.nextLine()); 
+				Prosjekt pro = eaoPro.finnProsjekt(pID);
+				
+				ProsjektDeltagelse proD = new ProsjektDeltagelse(ans2, rolle, 0, pro);
+				eaoPD.registrerProsjektDeltagalse(proD);
+//				proD.
+//				proD.setRolle(rolle);
+//				proD.setProsjektID(pID);
+				
+				
+				break;
 			}
 
 		} while (input != 0);

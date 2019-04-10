@@ -50,6 +50,9 @@ public class Avdeling {
 		return ansatt;
 	}
 
+	public void leggTilAnsatt(Ansatt ansatt) {
+		ansatte.add(ansatt); 
+	}
 	public void setSjefAnsatt(Ansatt ansatt) {
 		this.ansatt = ansatt;
 	}

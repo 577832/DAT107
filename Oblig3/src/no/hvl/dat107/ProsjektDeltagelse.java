@@ -14,50 +14,36 @@ public class ProsjektDeltagelse {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ansattid; 
-	private int prosjektDeltagelseID; 
+	private int ProsjektDeltagelseID;
+	
 	private String rolle; 
 	private int antTimer; 
 	
 	@ManyToOne
-	@JoinColumn(name="Ansatt_ID")
+	@JoinColumn(name="ansattID")
 	private Ansatt ansatt; 
 	
 	@ManyToOne
-	@JoinColumn(name="Prosjekt_ID")
+	@JoinColumn(name="ProsjektID")
 	private Prosjekt prosjekt; 
 	
 	public ProsjektDeltagelse() {}
 	
-	public ProsjektDeltagelse( int ansattid, String rolle, int antTimer) {
+	public ProsjektDeltagelse( Ansatt ansatt, String rolle, int antTimer, Prosjekt prosjekt) {
 	
-	this.ansattid = ansattid; 
+	this.ansatt = ansatt; 
 	this.rolle = rolle; 
-	this.antTimer = antTimer; 
+	this.antTimer = antTimer;
+	this.prosjekt = prosjekt; 
 		
 	}
 
 	@Override
 	public String toString() {
-		return "ProsjektDeltagelse: "  + "\n" + "Ansatt-ID: " + ansattid + "\n" +  "ProsjektDeltagelseID: " + prosjektDeltagelseID
+		return "ProsjektDeltagelse: "  + "\n" + "Ansatt-ID: " + ansatt.getAnsattId() + "\n" +  "ProsjektDeltagelseID: " + ProsjektDeltagelseID
 				+ "\n" +  "Rolle: " + rolle + "\n" + "AntTimer: " + antTimer;
 	}
-
-	public int getAnsattid() {
-		return ansattid;
-	}
-
-	public void setAnsattid(int ansattid) {
-		this.ansattid = ansattid;
-	}
-
-	public int getProsjektDeltagelseID() {
-		return prosjektDeltagelseID;
-	}
-
-	public void setProsjektDeltagelseID(int prosjektDeltagelseID) {
-		this.prosjektDeltagelseID = prosjektDeltagelseID;
-	}
+	
 
 	public String getRolle() {
 		return rolle;
@@ -90,6 +76,8 @@ public class ProsjektDeltagelse {
 	public void setProsjekt(Prosjekt prosjekt) {
 		this.prosjekt = prosjekt;
 	}
+
+
 	
 	
 	
